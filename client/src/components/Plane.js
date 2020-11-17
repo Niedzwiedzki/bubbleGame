@@ -1,11 +1,15 @@
 import React from 'react';
+import Player from './balls/player'
 
-export default function Plane() {
+const Plane = (state) => {
 
 
   return (
     <div className="plane">
-      
+      <Player/>
     </div>
   );
 }
+
+
+export default Plane

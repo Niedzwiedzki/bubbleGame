@@ -1,0 +1,16 @@
+.player__input{
+    position: relative;
+    width: 1px;
+    height: 1px;
+}
+
+.player__ball {
+    width: 15px;
+    height: 15px;
+    border: 1px solid $green;
+    background-color: $green;
+    position: absolute;
+    top: 0px;
+    border-radius: 100%;
+}
+

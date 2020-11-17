@@ -1,4 +1,4 @@
-import Plane from './components/Plane'
+import Plane from './components/plane'
 
 function App() {
   return (
