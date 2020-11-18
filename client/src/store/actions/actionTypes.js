@@ -1,1 +1,1 @@
-  export const MOVE = "MOVE";
+  export const PLAYER_MOVE = "PLAYER_MOVE";

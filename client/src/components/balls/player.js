@@ -2,12 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as actionTypes from '../../store/actions/ballMovement';
 
-const Player = (state) => {
+function Player (state)  {
 
   
     return (
-        <div className="player"  style={{position: "absolute", top: state.playerTop, left: state.playerLeft}} >
-          <input autoFocus className="player__input"  onKeyDown={(e) => state.move(e)}/> 
+        <div className="player"  style={{position: "absolute", top: state.playerTop + "%", left: state.playerLeft + "%"}} >
+          <input autoFocus className="player__input"  onKeyDown={(e) => state.playerMove(e)}/>
           <div className="player__ball"></div>
         </div>
     );
@@ -22,7 +22,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    move: (e) => dispatch(actionTypes.move(e))
+    playerMove: (e) => dispatch(actionTypes.playerMove(e))
   }
 }
 
