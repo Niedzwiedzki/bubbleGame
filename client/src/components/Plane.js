@@ -9,6 +9,10 @@ const Plane = (state) => {
     <div className="plane">
       <Player/>
       <Enemy/>
+      <Enemy/>
+      <Enemy/>
+      <Enemy/>
+      <Enemy/>
     </div>
   );
 }

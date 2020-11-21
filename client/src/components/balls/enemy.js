@@ -3,48 +3,55 @@ import { connect } from 'react-redux';
 import { sample } from 'lodash';
 import * as actionTypes from '../../store/actions/ballMovement';
 
+
 function Enemy (state) {
 
     const [bottom, setBottom] = useState(50);
     const [right, setRight] = useState(50);
     const [intervalId, setIntervalId] = useState();
-    const [hit, setHit] = useState(false);
+    const [hit, setHit] = useState(0);
+    const [moveHor, setMoveHor] = useState(Math.random().toFixed(1) / 2 * sample([1, -1]));
+    const [moveVer, setMoveVer] = useState(Math.random().toFixed(1) / 2 * sample([1, -1]));
 
-    let moveHor = Math.random().toFixed(1) / 2 * sample([1, -1]);
-    let moveVer = Math.random().toFixed(1) / 2 * sample([1, -1]);
+    
+
 
 
     useEffect(() => {
         const interval = setInterval(() => {
             setBottom(bottom => bottom + moveVer);
             setRight(right => right + moveHor);
-        }, 10);
+        }, 20);
         setIntervalId(interval);
-        return () => clearInterval(interval);
+        return () => {
+            clearInterval(interval);
+            
+        }
+        
+      }, [hit]);
 
-      }, []);
 
-
-      if(bottom <= 0 || bottom === 100 && !hit){
+      if(bottom <= 0 || bottom >= 100){
+        if(bottom <= 0){
+            setBottom(bottom + 2);
+        } else {
+            setBottom(bottom - 2);
+        }
         clearInterval(intervalId)
-        moveVer *= -1 
-        const interval = setInterval(() => {
-            console.log('ok')
-        },10)
-        setIntervalId(interval);
-        clearInterval(interval);
-        setHit(hit => true)
+        setMoveVer(moveVer * -1)
+        setHit(hit + 1) 
+
     }
 
-    if(right <= 0 || right === 100 && !hit){
+    if(right <= 0 || right >= 100){
+        if(right <= 0){
+            setRight(right + 2);
+        } else {
+            setRight(right - 2);
+        }
         clearInterval(intervalId)
-        moveHor *= -1 
-        const interval = setInterval(() => {
-            console.log('ok')
-        },10)
-        setIntervalId(interval);
-        clearInterval(interval);
-        setHit(hit => true)
+        setMoveHor(moveHor * -1)
+        setHit(hit + 1)
     }
 
 
